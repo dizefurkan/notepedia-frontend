@@ -1,8 +1,17 @@
+// const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: './src/public/index.js',
+  output: {
+  //   // path: path.resolve(__dirname, 'dist'),
+  //   // filename: 'index_bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [
       {

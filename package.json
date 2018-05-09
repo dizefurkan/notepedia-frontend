@@ -1,5 +1,5 @@
 {
-  "name": "reactjs-boilerplate",
+  "name": "notepedia-frontend",
   "version": "1.0.0",
   "description": "",
   "main": "./src/public/index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dizefurkan/reactjs-boilerplate.git"
+    "url": "git+https://dizefurkan@bitbucket.org/dizefurkan/notepedia-frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dizefurkan/reactjs-boilerplate/issues"
+    "url": "https://bitbucket.org/dizefurkan/notepedia-frontend/issues"
   },
-  "homepage": "https://github.com/dizefurkan/reactjs-boilerplate#readme",
+  "homepage": "https://bitbucket.com/dizefurkan/notepedia-frontend#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
@@ -46,6 +46,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.12",
     "@fortawesome/react-fontawesome": "0.0.19",
     "react": "^16.3.2",
+    "react-router-dom": "^4.2.2",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.2"
   }

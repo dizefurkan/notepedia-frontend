@@ -3,3 +3,12 @@
   clear: both;
   display: table;
 }
+
+a,
+a:hover,
+a:focus {
+  color: unset;
+  text-decoration: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Oswald');

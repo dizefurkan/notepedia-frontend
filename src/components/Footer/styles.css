@@ -1,3 +1,11 @@
+.footer {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  margin: 20px 0;
+}
+
 .title {
-  color: green;
+  text-align: center;
+  color: #333;
+  font-size: 20px;
 }
