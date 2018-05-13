@@ -2,6 +2,8 @@
   position: relative;
   display: block;
   margin-top: 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
 }
 
 .list {

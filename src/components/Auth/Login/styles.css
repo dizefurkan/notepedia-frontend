@@ -1,13 +1,79 @@
-
-.title {
-  display: block;
-  float: left;
-  color: darkblue;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-right: 10px;
+.login {
+  position: relative;
+  height: 100vh;
+  background-color: #34383d;
+  font-family: 'Roboto', sans-serif;
 }
 
-.title:last-child {
-  margin-right: 0;
+.box {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form {
+  position: relative;
+  padding: 20px;
+  background-color: #1c1e21;
+  border-radius: 10px;
+}
+
+.form:before {
+  content: '';
+  position: absolute;
+  top: 50%; right: -20px;
+  transform: translateY(-50%);
+  width: 100%; height: 5px;
+  background-color: #34383d;
+}
+
+.button {
+  position: absolute;
+  top: 50%; right: -20px;
+  transform: translateY(-50%);
+  width: 60px; height: 60px;
+  background-color: #1c1e21;
+  border: 5px solid #34383d;
+  border-radius: 100%;
+}
+
+.active {
+  transition: .5s;
+  color: #5b616e;
+}
+
+.input {
+  display: block;
+  width: 100vh;
+  padding: 20px 20px;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.input::placeholder {
+  font-weight: bold;
+  color: #34383d;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  left: 0;
+}
+
+.textBox {
+  position: relative;
+  padding: 20px;
+}
+
+.text {
+  color: #4b515c;
+}
+
+.textLink {
+  margin-left: 5px;
+  color: #606774;
+  font-weight: bold;
 }

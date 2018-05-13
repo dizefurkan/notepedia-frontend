@@ -1,5 +1,4 @@
 import React from 'react';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { Row, Col, Grid } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './styles.css';
@@ -8,15 +7,17 @@ import globalStyles from '../../public/main.css';
 class Header extends React.Component {
   render() {
     return (
-      <Row>
-        <Col xs={12}>
-          <div className={styles.header}>
-            <ul className={`${globalStyles.clearfix} ${styles.list}`}>
-              <Links />
-            </ul>
-          </div>
-        </Col>
-      </Row>
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <div className={styles.header}>
+              <ul className={`${globalStyles.clearfix} ${styles.list}`}>
+                <Links />
+              </ul>
+            </div>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
