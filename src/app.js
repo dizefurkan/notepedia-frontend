@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
   Link,
-  Redirect,
+  browserHistory,
 } from 'react-router-dom';
 import Header from './components/Header';
 import Section from './components/Section';
@@ -15,7 +15,7 @@ import Login from './components/Auth/Login';
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <Router history={browserHistory}>
         <div>
           <Header />
           <Switch>

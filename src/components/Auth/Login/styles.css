@@ -16,15 +16,16 @@
   padding: 20px;
   background-color: #1c1e21;
   border-radius: 10px;
+  transition: .3s;
 }
 
-.form:before {
-  content: '';
+.line {
   position: absolute;
   top: 50%; right: -20px;
   transform: translateY(-50%);
-  width: 100%; height: 5px;
+  width: 100%; height: 3px;
   background-color: #34383d;
+  transition: .3s;
 }
 
 .button {
@@ -76,4 +77,23 @@
   margin-left: 5px;
   color: #606774;
   font-weight: bold;
+}
+
+.formErrorHandling {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: red;
+  background-color: #1c1e21;
+  padding: 10px 20px;
+}
+
+.formHaveError {
+  border: 1px solid red;
+}
+
+.line.error,
+.button.error {
+  color: #1c1e21;
+  background-color: red;
 }

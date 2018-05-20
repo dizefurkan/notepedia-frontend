@@ -1,37 +1,67 @@
 import React from 'react';
 import cx from 'classnames';
+import axios from 'axios';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styles from './styles.css';
 import glStyles from '../../../public/main.css';
 
 class Login extends React.Component {
   state = {
-    error: '',
+    empty: false,
+    error: false,
+    message: '',
     username: '',
     password: '',
+    redirect: false,
   };
 
   submitHandler(e) {
     e.preventDefault();
-    const res = this.formReqControl();
-    // eslint-disable-next-line
-    res.then(result => console.log(result));
+    this.formRequestControl()
+      .then((result) => {
+        if (result.data.isJoi) {
+          this.setState({
+            error: true,
+            message: result.data.details[0].message,
+          });
+          return false;
+        }
+        if (!result.data.success) {
+          this.setState({
+            error: true,
+            message: result.data.message,
+          });
+        } else {
+          this.setState({
+            error: false,
+            redirect: true,
+          });
+        }
+        return undefined;
+      });
   }
 
-  formReqControl = () => {
+  formRequestControl = () => {
     return new Promise((resolve, reject) => {
       const {
         username,
         password,
       } = this.state;
       if (username.length > 0 && password.length > 0) {
-        resolve({
-          message: 'guzelll',
-        });
+        axios({
+          method: 'post',
+          url: 'http://localhost:3030/login',
+          data: {
+            username,
+            password,
+          },
+        }).then((result) => {
+          resolve(result);
+        }).catch(err => reject(err));
       } else {
         resolve({
-          error: 'Hataaa',
+          error: 'Error',
         });
       }
     });
@@ -40,24 +70,66 @@ class Login extends React.Component {
   onChange(e) {
     this.setState({
       [e.target.name]: e.target.value,
+    }, () => {
+      const { username, password, message } = this.state;
+      if (username === '' && password === '') {
+        this.setState({
+          empty: true,
+          error: false,
+          message: false,
+        });
+      } else {
+        this.setState({
+          empty: false,
+        });
+      }
     });
   }
 
   render() {
-    const { username, password } = this.state;
+    const {
+      username,
+      password,
+      error,
+      empty,
+      message,
+      redirect,
+    } = this.state;
     const submitEnabled = username.length > 0 && password.length > 0;
     const { active } = styles;
+    if (redirect) {
+      return <Redirect to='/' />;
+    }
     return (
       <Grid>
         <Row>
           <Col xs={12}>
             <div className={styles.login}>
               <div className={styles.box}>
-                <div>{this.state.error}</div>
+                <div>
+                  {
+                    error && !empty &&
+                    <p className={styles.formErrorHandling}>
+                      {message}
+                    </p>
+                  }
+                </div>
                 <form action=""
-                  className={styles.form}
+                  className={cx(
+                    styles.form,
+                    {
+                      [styles.formHaveError]: error && !empty,
+                    },
+                  )}
                   onSubmit={e => this.submitHandler(e)}
                 >
+                  <div className={cx(
+                    styles.line,
+                    {
+                      [styles.error]: error && !empty,
+                    },
+                  )}
+                  ></div>
                   <div className={glStyles.relative}>
                     <input
                       type="text"
@@ -80,10 +152,13 @@ class Login extends React.Component {
                   </div>
                   <button
                     disabled={!submitEnabled}
-                    className={`
-                      ${styles.button}
-                      ${submitEnabled ? active : ''}
-                    `}
+                    className={cx(
+                      styles.button,
+                      {
+                        [styles.error]: error && !empty,
+                        [styles.active]: submitEnabled,
+                      },
+                    )}
                   >
                     <i className="fas fa-play"></i>
                   </button>
